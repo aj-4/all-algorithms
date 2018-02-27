@@ -22,6 +22,16 @@
 
 ## Sorting
 ### Merge Sort
-- O(n log n)
+- Guaranteed O(n log n) 
+- Split Recursively until array length 1, build up by merging
+- Stable sort (retains position on multiple key sorts)
+#### Bottom-Up Merge Sort
+- Iterative approach: Two for loops, second is n * 2 intervals
+- Compare in place by twos, fours, etc until merged
 
 ### Quick Sort
+- Shuffle, partition from pivot, recurse left, recurse right
+- Avg O(1.3n log n) - faster than merge sort
+- Worst case is O(n^2) - when already sorted
+- Not stable
+
