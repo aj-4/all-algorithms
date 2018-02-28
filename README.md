@@ -35,3 +35,32 @@
 - Worst case is O(n^2) - when already sorted
 - Not stable
 
+## Priority Queues
+### Binary Heap
+- Starts at index 1
+- Max: O(n)
+- Del Max: O(log n) Swap with end, pop, and sink down
+- Add: O(log n) Push to end and bubble up
+
+### Heap Sort
+- In place with O(n log n) worst case
+- No use of cache memory
+- Not stable
+
+## Elementary Symbol Tables
+### Symbol Table
+- (Key, Value) Like an object, but ordered
+- Implemented with 2 sorted arrays (one keys, one values)
+
+- Retrieve in O(log n) with binary search 
+- Insert O(n) - major flaw
+
+### Binary Search Tree
+- A binary tree in symmetric order (left smaller, right larger)
+- Search / insert average case O(log n) / worst case O(n)
+- Pre order / In order / Post order traversals
+
+- Removal options: tombstone (leave key, rm value) 
+- Or: Hibbard Deletion (replace with right's lesser child) - leads to asymmetrical O(sqrt(n)) operations tree
+
+- Validate recursively with min/max
