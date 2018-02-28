@@ -17,6 +17,7 @@ const sort = (arr, left = 0, right = arr.length - 1) => {
     let pivotIndex = Math.floor((left + right) / 2);
     let pivot = arr[pivotIndex];
 
+    //partition
     while (i <= j) {
         while (arr[i] < pivot) {
             i++;
@@ -32,6 +33,8 @@ const sort = (arr, left = 0, right = arr.length - 1) => {
             j--;
         }
     }
+
+    //recursion
     if (left < j) {
         sort(arr, left, j);
     }
