@@ -64,3 +64,16 @@
 - Or: Hibbard Deletion (replace with right's lesser child) - leads to asymmetrical O(sqrt(n)) operations tree
 
 - Validate recursively with min/max
+
+## Balanced Search Trees
+- Guaranteed O(log n)
+### 2-3 Search Trees
+- Each node 1 key (2 child) / 2 key (3c) => if 3 key, new parent
+### Red-Black Trees
+- 2-3 trees, 2 key trees represented as red path
+
+- Default red path on insertion, then adjustment, rules:
+- Red path must lean left, only 1 red path per node
+
+- To follow rules, perform operations:
+- Flip colors, rotate left, rotate right
