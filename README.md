@@ -55,6 +55,10 @@
 - Retrieve in O(log n) with binary search 
 - Insert O(n) - major flaw
 
+### Set
+- A collection of unique keys 
+- Can be used for exception filters blacklisting / whitelisting
+
 ### Binary Search Tree
 - A binary tree in symmetric order (left smaller, right larger)
 - Search / insert average case O(log n) / worst case O(n)
@@ -79,6 +83,7 @@
 - Flip colors, rotate left, rotate right
 
 ## Hash Tables
+- Best for short keys, unordered values
 ### Hashing Function
 - Hashing functions should give all indices equally
 - One way is Horner's method (character * 31) % 2
@@ -86,4 +91,10 @@
 - Coupon Collector / Load Balancing: Evenly distributed
 
 ### Separate Chaining
+- Dealing with Collisions using a LinkedList
+- Constant time lookup avg, worst case linear
 
+### Linear Probing
+- 'Open addressing' using array, try next (i + 1) if full
+- Forms clusters that must searched on retrieval, kept small
+- Can be prevented by 'Two probe' or 'Double hashing'
