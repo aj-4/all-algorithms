@@ -77,3 +77,13 @@
 
 - To follow rules, perform operations:
 - Flip colors, rotate left, rotate right
+
+## Hash Tables
+### Hashing Function
+- Hashing functions should give all indices equally
+- One way is Horner's method (character * 31) % 2
+- Birthday problem: Collisions are inevitable
+- Coupon Collector / Load Balancing: Evenly distributed
+
+### Separate Chaining
+
