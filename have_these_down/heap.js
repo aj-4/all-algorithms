@@ -1,3 +1,6 @@
-const minHeap = () => {
+class minHeap {
+    constructor() {
+        
+    }
     
 }

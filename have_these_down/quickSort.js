@@ -1,3 +1,3 @@
-const quickSort = () => {
+const quickSort = (arr) => {
     
 }

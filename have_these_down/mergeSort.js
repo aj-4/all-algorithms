@@ -1,3 +1,3 @@
-const mergeSort = () => {
+const mergeSort = (arr) => {
     
 }
