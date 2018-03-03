@@ -98,3 +98,8 @@
 - 'Open addressing' using array, try next (i + 1) if full
 - Forms clusters that must searched on retrieval, kept small
 - Can be prevented by 'Two probe' or 'Double hashing'
+
+## Graphs and Trees
+### Graphs
+- Points connected to each other, directed or undirected
+- DFS: Maze Exploration of possible paths - recursion
