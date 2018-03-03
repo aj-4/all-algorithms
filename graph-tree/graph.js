@@ -1,6 +1,7 @@
 class Graph {
     constructor() {
-        this.points = [];
+        this.edgeTo = [];
+        this.points = []
     }
     addPoint(val = this.points.length) {
         this.points.push(new Point(val));
@@ -9,23 +10,56 @@ class Graph {
         this.points[from].edges.push(to);
     }
     DFS(from, target) {
-        const paths = [];
-        this._checkPath(from, target, paths);
-        return paths;
-    }
-    _checkPath(from, target, paths, visited = []) {
-        visited = visited.slice();
-        visited.push(from);
-        for (let edge of this.points[from].edges) {
-            if (this.points[edge].value === target) {
-                visited.push(edge);
-                paths.push(visited);
-                return;
+        let q = [this.points[from]];
+        const path = [];        
+        const marked = [];
+        const edgeTo = [];
+        while(q.length) {
+            let pt = q.shift();
+            if (pt.value === target) {
+                let val = target;
+                while (val !== from) {
+                    path.push(val);
+                    val = edgeTo[val];
+                }
+                path.push(val);
+                break;
             }
-            if (!visited.includes(edge)) {
-                this._checkPath(edge, target, paths, visited);
+            for (let edge of pt.edges) {
+                if (!marked[edge]) {
+                    marked[edge] = true;
+                    edgeTo[edge] = pt.value;
+                    q.unshift(this.points[edge]);
+                }
             }
         }
+        return path.reverse();        
+    }
+    BFS(from, target) {
+        const stack = [this.points[from]];
+        const path = [];
+        const marked = [];
+        const edgeTo = [];
+        while (stack.length) {
+            let pt = stack.pop();
+            if (target === pt.value) {
+                let link = target;
+                while (link !== from) {
+                    path.push(link);
+                    link = edgeTo[link];
+                }
+                path.push(link);
+            }
+            for (let edge of pt.edges) {
+                if (!marked[edge]) {
+                    marked[edge] = true;
+                    edgeTo[edge] = pt.value;
+                    stack.push(this.points[edge]);
+                }
+            }
+        }
+        console.log(edgeTo);
+        return path.reverse();
     }
 }
 
@@ -48,7 +82,6 @@ console.log(graf.points[1].value === 1);
 graf.addEdge(0,1);
 graf.addEdge(1,2);
 graf.addEdge(2,3);
-graf.addEdge(1,3);
-graf.addEdge(0, 3);
 
 console.log(graf.DFS(0, 3));
+console.log(graf.BFS(0, 2));
