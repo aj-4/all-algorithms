@@ -38,7 +38,7 @@
 ## Priority Queues
 ### Binary Heap
 - Starts at index 1
-- Max: O(n)
+- Max: O(1)
 - Del Max: O(log n) Swap with end, pop, and sink down
 - Add: O(log n) Push to end and bubble up
 
@@ -99,7 +99,58 @@
 - Forms clusters that must searched on retrieval, kept small
 - Can be prevented by 'Two probe' or 'Double hashing'
 
-## Graphs and Trees
-### Graphs
-- Points connected to each other, directed or undirected
-- DFS: Maze Exploration of possible paths - recursion
+## Undirected Graphs
+- Use 'marked' and 'edgeto' properties to search
+### DFS
+DFS: Maze Exploration of possible paths - recursion or stack
+- Connected Components - Are 2 components in connected subgraph?
+### BFS
+BFS: Branching search - queue
+- find path between 2 nodes
+### Challenges
+- Bipartite Graph: Is every (red) connected to only (blacks) O(n)
+- Eulerian Cycle: Traverse every edge exactly once O(n)
+- Hamiltonian Cycle: Visit each vertex exactly once (intractable)
+- Graph isomorphism: Are 2 graphs identical despite vertex names? (unknown)
+- No overlap layout: Extremely complex but O(n)
+
+## Directed Graphs (dirGraphs)
+Vertex has indegree (arrows in) and outdegree (arrows out)
+- Program flow is always a digraph
+- Garbage collection is a digraph of pointers
+### DFS + BFS
+- DFS code same as undirected (marked, edgeTo, arrays)
+- BFS code same as undirected (marked, edgeTo, distTo arrays)
+- Web crawler (BFS)
+### Topological Sort
+- How can you schedule tasks with precedence constraints?
+- Draw DAG (directed acyclic graph) so all the edges point up
+- Solve with DFS (create reverse postOrder stack)
+### Strong(ly Connected) Components
+- Points directed at each other - can be through other points
+- Works similar to connected component subarrays
+##### Kosaraju-Sharir Algorithm
+Used to find all strongly connected components
+- FIRST topological sort => on reverse() version of graph
+- THEN iterate normal graph in order of rev pOs - group DAG kernel
+
+## Minimum Spanning Trees
+Definition: Shortest way to connect edge weighted graph - acyclic
+### Greedy Algorithm
+Cut: A partition of the graph into two non-empty sets
+Crossing edge: connects a vertex in one set to one in the other
+- Continually cut, find minimum edge (black) until no more cuts w/o black
+- While (vertex count - 1 black edges), continue cutting
+- Graph not connected? Minimum spanning forest
+##### Kruskal's Algorithm
+Sort edges by shortest first, keep adding until there's a cycle
+- Use min heap
+- Check for cycle with union find + set array
+- Repeat until (V - 1) edges
+- worst O(n log n)
+##### Prim's Algorithm
+Start with vertex 0, add min weight edge to MST -> (a queue)
+- Re evaluate min weight edge which connects to the tree
+- Use priority queue (min heap) to hold all edges (Lazy solution)
+- Repeat until (V - 1) edges
+- (Eager) - What is the best way to get to the tree, considering current edges? (Need INDEXED priority queue)
