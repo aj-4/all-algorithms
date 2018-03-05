@@ -15,7 +15,6 @@ class LinkedList {
         }
     }
     addToHead(data) {
-        console.log('adding node', data);
         let node = new Node(data);
         if (!this.head) {
             this.head = node;
@@ -24,6 +23,21 @@ class LinkedList {
             node.next = this.head;
             this.head = node;
         }
+    }
+    addToTail(data) {
+        let node = new Node(data);
+        if (!this.head) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+    }
+    rmFromHead() {
+        let node = this.head;
+        this.head = this.head.next;
+        return node;
     }
     getAt(i) {
         let node = this.head;

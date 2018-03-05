@@ -135,7 +135,7 @@ Used to find all strongly connected components
 - THEN iterate normal graph in order of rev pOs - group DAG kernel
 
 ## Minimum Spanning Trees
-Definition: Shortest way to connect edge weighted graph - acyclic
+Definition: Shortest way to connect *edge weighted graph* - acyclic
 ### Greedy Algorithm
 Cut: A partition of the graph into two non-empty sets
 Crossing edge: connects a vertex in one set to one in the other
@@ -154,3 +154,6 @@ Start with vertex 0, add min weight edge to MST -> (a queue)
 - Use priority queue (min heap) to hold all edges (Lazy solution)
 - Repeat until (V - 1) edges
 - (Eager) - What is the best way to get to the tree, considering current edges? (Need INDEXED priority queue)
+
+## Shortest Paths
+For *edge weighted digraphs*
