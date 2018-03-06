@@ -7,6 +7,9 @@ class MinHeap {
         this.store.push(node);
         this._bubble();
     }
+    isEmpty() {
+        return this.store.length < 2;
+    }
     min() {
         return this.store[1];
     }
@@ -20,14 +23,14 @@ class MinHeap {
     }
     _sink(on = 1){
         let onNode = this.store[on];
-        let onVal = this.store[on][this.sortBy];
+        let onVal = onNode ? this.store[on][this.sortBy] : Number.MIN_SAFE_INTEGER;
 
         let c1i = on * 2;
         let c2i = on * 2 + 1;
         let c1 = this.store[c1i];
         let c2 = this.store[c2i];
-        let c1val = c1[this.sortBy];
-        let c2val = c2[this.sortBy];
+        let c1val = c1 ? c1[this.sortBy] : Number.MAX_SAFE_INTEGER;
+        let c2val = c2? c2[this.sortBy] : Number.MAX_SAFE_INTEGER;
 
         if (c1val < onVal || c2val < onVal) {
             if (c1val < c2val) {
@@ -44,11 +47,8 @@ class MinHeap {
     _bubble(on = this.store.length - 1){
         
         let parent = on >> 1;
-
         if (parent < 1) return;
-
         let p = this.store[parent];
-        
         let pval = p[this.sortBy];
 
         let onNode = this.store[on];
@@ -62,7 +62,7 @@ class MinHeap {
     }
 }
 
-//test
+// //test
 // let mh = new MinHeap;
 // mh.add(5);
 // mh.add(6);

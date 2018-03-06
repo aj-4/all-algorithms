@@ -9,13 +9,16 @@ class LinkedList {
     constructor(data) {
         if (data) {
             this.addToHead(data);
+            this.length = 1;
         } else {
             this.head = null;
             this.tail = null;
+            this.length = 0;
         }
     }
     addToHead(data) {
         let node = new Node(data);
+        this.length++;
         if (!this.head) {
             this.head = node;
             this.tail = node;
@@ -26,6 +29,7 @@ class LinkedList {
     }
     addToTail(data) {
         let node = new Node(data);
+        this.length++;
         if (!this.head) {
             this.head = node;
             this.tail = node;
@@ -36,6 +40,7 @@ class LinkedList {
     }
     rmFromHead() {
         let node = this.head;
+        this.length--;
         this.head = this.head.next;
         return node;
     }
@@ -66,9 +71,10 @@ class LinkedList {
     *[Symbol.iterator]() {
         let node = this.head;
         let count = 0;
-        while (count < i) {
-            yield node.value;
+        while (count < this.length) {
+            yield node.data;
             node = node.next;
+            count++;
         }
     }
 }

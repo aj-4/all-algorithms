@@ -3,7 +3,7 @@ class EWGraph {
         this.edges = [];
         this.vertices = [];      
     }
-    addPoint(val = this.edges.length) {
+    addPoint(val = this.vertices.length) {
         this.vertices.push(val);
     }
     addEdge(from, to, weight) {
