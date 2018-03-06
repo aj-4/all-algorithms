@@ -144,8 +144,7 @@ Crossing edge: connects a vertex in one set to one in the other
 - Graph not connected? Minimum spanning forest
 ##### Kruskal's Algorithm
 Sort edges by shortest first, keep adding until there's a cycle
-- Use min heap
-- Check for cycle with union find + set array
+- Use queue, min heap, union find
 - Repeat until (V - 1) edges
 - worst O(n log n)
 ##### Prim's Algorithm
@@ -156,4 +155,9 @@ Start with vertex 0, add min weight edge to MST -> (a queue)
 - (Eager) - What is the best way to get to the tree, considering current edges? (Need INDEXED priority queue)
 
 ## Shortest Paths
-For *edge weighted digraphs*
+For *edge weighted digraphs* - how do we get from one vertex to every other vertex?
+- Iterate through weighted edges branching from origin, in increasing length
+#### Dijkstra's Algorithm
+Computes a SPT (Shortest Path) in any edge weighted digraph with non-negative weights
+- Relaxing paths always decreases length
+- Use Indexed PQ (with decrease keys) -> makes an asymptotic difference with fibonacci heap

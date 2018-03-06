@@ -19,7 +19,7 @@ class MST {
     constructor(EWGraph) {
         this.edges = new Q;
         this.size = 0;
-        this.kruskal(EWGraph);
+        this.prim(EWGraph);
     }
     *[Symbol.iterator]() {
         for (let edge of this.edges) {
@@ -55,7 +55,31 @@ class MST {
         return this.edges;
     }
     prim(graph) {
-        
+        //starts from 0, takes shortest connected to graph
+        let pq = new PQ('weight');
+        let marked = [];
+        for (let point in graph.edges) {
+            marked.push(false);
+        }
+        this._visit(graph, 0, marked, pq);
+        while(!pq.isEmpty()) {
+            let e = pq.rmMin();
+            let v = e.either(), w = e.other();
+            if (marked[v] && marked[w]) continue;
+            this.edges.enq(e);
+            if (!marked[v]) this._visit(graph, v, marked, pq);
+            if (!marked[w]) this._visit(graph, w, marked, pq);            
+        }
+
+        return this.edges;
+    }
+    _visit(graph, v, marked, pq) {
+        marked[v] = true;
+        for (let edge of graph.edges[v]) {
+            if (!marked[edge.other(v)]) {
+                pq.insert(edge);
+            }
+        }
     }
     weight(){
         const wt = 0;
