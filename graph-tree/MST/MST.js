@@ -63,6 +63,8 @@ class MST {
         }
         this._visit(graph, 0, marked, pq);
         while(!pq.isEmpty()) {
+            console.log('pq is', pq);
+            
             let e = pq.rmMin();
             let v = e.either(), w = e.other();
             if (marked[v] && marked[w]) continue;
@@ -75,9 +77,13 @@ class MST {
     }
     _visit(graph, v, marked, pq) {
         marked[v] = true;
+        
         for (let edge of graph.edges[v]) {
+            console.log('marked:', marked);
+            
+            console.log('edge:', marked[edge.other(v)]);            
             if (!marked[edge.other(v)]) {
-                pq.insert(edge);
+                pq.add(edge);
             }
         }
     }
