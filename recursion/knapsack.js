@@ -7,7 +7,6 @@ const knapsack = (items, capacity) => {
         
         for (let cap = 1; cap <= capacity; cap++) {
             let sol = getSolution(i, cap)
-            console.log('pushing:', sol);
             row.push(sol);                        
         }
         memo.push(row);
@@ -20,10 +19,12 @@ const knapsack = (items, capacity) => {
         const NA = {maxValue: 0, subset: []};
 
         let col = cap - 1;
-        let lastItem = items[row];
-        let rem = cap - lastItem.w;
+        let item = items[row];
+        let rem = cap - item.w;
 
+        //check row above
         let lastSol = row > 0 ? memo[row - 1][col] || NA : NA;
+        //check row above, minus new val
         let lastSub = row > 0 ? memo[row - 1][rem - 1] || NA : NA;
 
         if (rem < 0) {
@@ -33,10 +34,10 @@ const knapsack = (items, capacity) => {
         let lastSolVal = lastSol.maxValue;
         let lastSubVal = lastSub.maxValue;
 
-        let newVal = lastSubVal + lastItem.v;
+        let newVal = lastSubVal + item.v;
         if (newVal >= lastSolVal) {
             let _lastSub = lastSub.subset.slice();
-            _lastSub.push(lastItem);
+            _lastSub.push(item);
             return {maxValue: newVal, subset: _lastSub};
         } else {
             return lastSol
