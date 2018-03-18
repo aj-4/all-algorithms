@@ -2,17 +2,17 @@
 
 //bit vector implementation
 const powerSet = (set) => {
-    const out = [];
-    for (let i = 0; i < 1 << set.length; i++) {
+    const powerSet = [[]];
+    for (let i = 1; i < 1 << set.length; i++) {
         let subset = [];
         for (let j = 0; j < set.length; j++) {
-            if ((1 << j) & i) {
+            if (i & (1 << j)) {
                 subset.push(set[j]);
             }
         }
-        out.push(subset);
+        powerSet.push(subset.join(''));
     }
-    return out;
+    return powerSet;
 }
 
 console.log(powerSet([1,2,3,4]));
