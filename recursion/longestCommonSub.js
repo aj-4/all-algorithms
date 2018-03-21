@@ -20,7 +20,6 @@ const LCS = (arr1, arr2) => {
     // return dp[ri][ci];
     
     const sequence = [];
-    console.log(dp);
 
     while (dp[ri][ci] > 0) {
         //searching for inflection point

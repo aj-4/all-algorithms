@@ -3,15 +3,13 @@ const knapsack = (items, capacity) => {
 
     for (let i = 0; i < items.length; i++) {
         let row = [];
-        console.log('row ', i);
-        
         for (let cap = 1; cap <= capacity; cap++) {
             let sol = getSolution(i, cap)
             row.push(sol);                        
         }
         memo.push(row);
     }
-    
+
     let lastRow = memo[memo.length - 1];
     return lastRow[lastRow.length - 1];
 
