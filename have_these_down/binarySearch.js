@@ -4,14 +4,12 @@ const binarySearch = (arr, val) => {
 
     while (left <= right) {
         let mid = (left + right) >> 1;
-        let midVal = arr[mid];
-
-        if (midVal === val) {
+        if (arr[mid] === val) {
             return mid;
-        } else if (val > midVal) {
-            left = mid + 1;
-        } else {
+        } else if (val < arr[mid]) {
             right = mid - 1;
+        } else {
+            left = mid + 1;
         }
     }
 
